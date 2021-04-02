@@ -71,9 +71,7 @@ export default class About extends Component{
         var email = document.getElementById("email").value;
         var message = document.getElementById("messageField").value;
 
-        console.log(firstName);
         if(firstName.length === 0 || lastName.length === 0 || email.length === 0 || message.length === 0){
-            console.log("All fields are required");
             document.getElementById("requiredNotice").style.display = "block";
         }
         else{
@@ -83,7 +81,14 @@ export default class About extends Component{
             console.log("Message: " + this.state.message);
             console.log(document.getElementById("firstName").value.length);
             document.getElementById("requiredNotice").style.display = "none";
-            document.getElementById("sentNotice").style.display = "block"
+            document.getElementById("sentNotice").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("sentNotice").style.display = "none";
+                document.getElementById("firstName").value = '';
+                document.getElementById("lastName").value = '';
+                document.getElementById("email").value = '';
+                document.getElementById("messageField").value = '';
+            }, 3000);
         }
         event.preventDefault();
     }
