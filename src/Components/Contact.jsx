@@ -22,16 +22,16 @@ export default class About extends Component{
                 <p>If you want to come in contact with me, please do write a message to me and I will get back to you as soon as I can :)</p>
                 <form className="messageForm">
                     <label>First Name / Förnamn</label><br/>
-                    <input id="firstName" type="text" value={this.state.fName} onChange={this.handleFirstName} required />
+                    <input id="firstName" className="textFields" type="text" value={this.state.fName} onChange={this.handleFirstName} required />
                     <br/>
                     <label>Last Name / Efternamn</label><br/>
-                    <input id="lastName" type="text" onChange={this.handleLastName}  required/>
+                    <input id="lastName" className="textFields" type="text" onChange={this.handleLastName}  required/>
                     <br/>
                     <label>Email / Epost</label><br/>
-                    <input id="email" type="email"  onChange={this.handleEmail} required/><br/>
+                    <input id="email" className="textFields" type="email"  onChange={this.handleEmail} required/><br/>
                     <label>Message / Meddelande</label><br/>
 
-                    <textarea id="messageField" type="text" onChange={this.handleMessage} placeholder="Write your message here../Skriv ditt meddelande här.." required/><br/>
+                    <textarea id="messageField" className="textFields" type="text" onChange={this.handleMessage} placeholder="Write your message here../Skriv ditt meddelande här.." required/><br/>
                     <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required / Alla fält är obligatoriska att fylla i</p>
                     <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} {this.state.lName} for your message</p>
 
@@ -83,6 +83,7 @@ export default class About extends Component{
             document.getElementById("requiredNotice").style.display = "none";
             document.getElementById("sentNotice").style.display = "block";
             setTimeout(() => {
+                console.log("firstName: " + firstName);
                 document.getElementById("sentNotice").style.display = "none";
                 document.getElementById("firstName").value = '';
                 document.getElementById("lastName").value = '';
