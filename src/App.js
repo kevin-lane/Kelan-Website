@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './Components/Navigationbar';
 import Home from './Components/Home';
@@ -10,13 +9,10 @@ function App() {
     switch (window.location.pathname) {
       case '/about':
         return( <About />);
-        break;
       case '/contact':
         return( <Contact />);
-        break;
       default:
         return(<Home />);
-        break;
     }
   }
 

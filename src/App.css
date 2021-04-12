@@ -36,6 +36,7 @@
   background-color: #F2F2F2;
   border-radius: 8px;
   color: black;
+  max-height: 405.38px;
 }
 
 .messageForm input[type=text], input[type=email], #messageField {
@@ -47,10 +48,10 @@
  #messageField { 
    min-width:800px; 
    min-height: 40px;
-  max-width: 800px; 
+   max-width: 800px; 
  } 
 
-.submitBtn {
+#submitBtn {
   border: 1px solid gray;
   border-radius: 4px;
   background-color: green;
@@ -60,3 +61,47 @@
   font-family:Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+
+#sentNotice{
+  position: relative;
+  bottom: 100px;
+}
+
+/*OK animation (When message is sent)*/
+#greenSquare {
+  display: none;
+  filter: blur(0);
+  background-color: green;
+  color: #F2F2F2;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  position: relative;
+  animation: yes-animation 1s forwards;
+}
+
+/* Check Icon */
+.checkIcon {
+  position:relative;
+  margin: auto;
+  width: 20px;
+  height: 40px;
+  top: 20px;
+  left: 0px;
+  border-top: 6px solid wheat;
+  border-left: 6px solid wheat;
+  transform: rotateZ(225deg);
+}
+
+@keyframes yes-animation {
+  0%{
+    top: 0;
+  }
+  50%{
+    top: 175px;
+  }
+  100%{
+    top: 150px;
+  }
+}
+
