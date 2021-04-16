@@ -10,7 +10,7 @@ export default function NavigationBar(){
                 <a href="/">Home</a>
                 <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a className="svgNavs" href="https://www.linkedin.com/in/kevin-lane-884950a7/" target="_blank"><LinkedIn></LinkedIn></a>
+                <a className="svgNavs" href="https://www.linkedin.com/in/kevin-lane-884950a7/" target="_blank" rel="noreferrer"><LinkedIn></LinkedIn></a>
             </ul>
             
         </div>
