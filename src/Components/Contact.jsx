@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Geolocation from '../assets/svg/GeolocationIcon';
 
 export default class About extends Component{
     constructor(props){
@@ -41,6 +42,9 @@ export default class About extends Component{
 
                             <button id="submitBtn" className="formContent" type="submit" onClick={this.sendMessage}>Send message</button>
                         </form>
+                    </div>
+                    <div>
+                        <p><Geolocation /> Stockholm, Sweden</p>
                     </div>
             </div>
         );
