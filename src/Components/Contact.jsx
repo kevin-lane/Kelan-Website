@@ -20,30 +20,28 @@ export default class About extends Component{
         return(
             <div>
                 <p>If you want to come in contact with me, please do write a message to me and I will get back to you as soon as I can :)</p>
-                <div style={{backgroundColor: 'black'}}> 
                     <div id="messageForm" className="messageForm">
                         <div id="greenSquare">
                             <div className="checkIcon"></div>
                         </div>
                         <form>
-                            <label className="formContent">First Name / Förnamn</label><br/>
+                            <label className="formContent">First Name</label><br/>
                             <input id="firstName" className="formContent" type="text" value={this.state.fName} onChange={this.handleFirstName} required />
                             <br/>
-                            <label className="formContent">Last Name / Efternamn</label><br/>
+                            <label className="formContent">Last Name</label><br/>
                             <input id="lastName" className="formContent" type="text" onChange={this.handleLastName}  required/>
                             <br/>
-                            <label className="formContent">Email / Epost</label><br/>
+                            <label className="formContent">Email</label><br/>
                             <input id="email" className="formContent" type="email"  onChange={this.handleEmail} required/><br/>
-                            <label className="formContent">Message / Meddelande</label><br/>
+                            <label className="formContent">Message</label><br/>
 
-                            <textarea id="messageField" className="formContent" type="text" onChange={this.handleMessage} placeholder="Write your message here../Skriv ditt meddelande här.." required/><br/>
-                            <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required / Alla fält är obligatoriska att fylla i</p>
+                            <textarea id="messageField" className="formContent" type="text" onChange={this.handleMessage} placeholder="Write your message here.." required/><br/>
+                            <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required</p>
                             <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} {this.state.lName} for your message</p>
 
                             <button id="submitBtn" className="formContent" type="submit" onClick={this.sendMessage}>Send message</button>
                         </form>
                     </div>
-                </div>  
             </div>
         );
     }
