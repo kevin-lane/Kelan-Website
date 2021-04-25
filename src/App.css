@@ -32,6 +32,10 @@
   text-decoration: none;
 }
 
+.Navbar a:hover{
+  color: yellow;
+}
+
 .svgNavs {
   position: relative;
   float: right;
