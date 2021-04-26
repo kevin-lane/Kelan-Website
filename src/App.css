@@ -1,21 +1,21 @@
 .App {
   text-align: center;
-}
+} 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* .App-header {
+  background-color: #282c34; 
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: calc(10px + 2vmin); 
   color: white;
-}
+} */
 
 /* Navigation bar */
 .Navbar {
-  background-color: black;
+  background-color: blue;
   padding: 1px;
   position: fixed;
   top: 0px;
@@ -41,6 +41,48 @@
   float: right;
   bottom: 18px;
 }
+
+/* Home */
+.presentation {
+  background-color: #5295D9;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    margin-top: 57px;
+    padding: 30px;
+    font-family:sans-serif;
+    color: #F2F2F2;
+    border-bottom: 5px solid rgb(135, 206, 250, .1);
+}
+
+#home-under-layer {
+  background-image: url('./assets/images/stockholm.jpg'); 
+  background-size: cover; 
+  width: 100%; 
+  height: auto;
+  position: absolute;
+
+  min-width: 100%;
+  min-height: 86%; 
+  max-height: 86%;
+}
+
+.contact-me-btn{
+  display: inline-block;
+  color: #F2F2F2;
+  text-decoration: none;
+  background-color: rgb(78, 107, 236, -.1);
+  height: 30px;
+  width: 165px;
+  border: 2px solid rgb(237, 233, 232, .6);
+  cursor: pointer;
+  font-size: larger;
+}
+
+.contact-me-btn:hover{
+  border: 3px solid rgba(237, 233, 232, 0.6);
+}
+
 /* Contact.jsx */
 .messageForm {
   float: left;

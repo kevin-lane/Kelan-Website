@@ -19,10 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavigationBar className="Navbar" /> 
-      
-      <header className="App-header">
           {switchPage()}
-      </header>
     </div>
   );
 }

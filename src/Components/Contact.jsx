@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Geolocation from '../assets/svg/GeolocationIcon';
+import MailIcon from '../assets/svg/MailIcon';
+import Telephone from '../assets/svg/TelephoneIcon';
 
 export default class About extends Component{
     constructor(props){
@@ -44,7 +46,9 @@ export default class About extends Component{
                         </form>
                     </div>
                     <div>
-                        <p><Geolocation /> Stockholm, Sweden</p>
+                        <p><Geolocation /><br/> Stockholm, Sweden</p>
+                        <p><MailIcon /><br/>kevinlane3@hotmail.com</p>
+                        <p><Telephone /><br/>+46 73 907 64 61</p>
                     </div>
             </div>
         );
