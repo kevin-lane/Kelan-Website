@@ -3,7 +3,7 @@ import '../../App';
 
 export default function Education(){
     return(
-        <article className="experienceSection">
+        <article className="aboutMe">
             <h1>Education</h1>
             <h3>SharePoint Developer - Higher Vocational Education/Yrkeshögskoleexamen - EC Utbildning (2017 - 2019)</h3>
             <p>This programs aim is to make you a certified SharePoint Developer. Courses included in this program are mainly about administration and building applications in SharePoint.

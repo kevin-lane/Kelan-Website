@@ -3,7 +3,7 @@ import '../../App';
 
 export default function Career(){
     return(
-        <article className="experienceSection">
+        <article className="aboutMe">
             <h1>Career</h1>
             <h3> Office365/SharePoint Developer - Enfo  (Oct. 2019 - Feb. 2020) </h3>
             <p>At Enfo I worked in the Modern Workplace Team mainly 
