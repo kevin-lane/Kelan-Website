@@ -11,10 +11,6 @@ export default function About(){
     useEffect(() => {
         console.log("About Page working");
         document.body.style.backgroundImage = `url(${BackgroundImage})`;
-        // document.body.style.backgroundSize = `${window.screen.width}px ${window.screen.height}px`;
-        console.log(window.screen.height);
-        console.log(window.screen.width);
-
     });
 
     return(
