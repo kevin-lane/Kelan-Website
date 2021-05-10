@@ -3,8 +3,9 @@ import '../App.css';
 import Geolocation from '../assets/svg/GeolocationIcon';
 import MailIcon from '../assets/svg/MailIcon';
 import Telephone from '../assets/svg/TelephoneIcon';
+import BackgroundImage from '../assets/images/palmsky.jpg';
 
-export default class About extends Component{
+export default class Contact extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -19,33 +20,34 @@ export default class About extends Component{
         this.handleMessage = this.handleMessage.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
     }
+
+    componentDidMount(){
+        document.body.style.backgroundImage = `url(${BackgroundImage})`;
+        document.body.style.backgroundAttachment = 'fixed';
+    }
     render(){
         return(
             <div>
-                <p>If you want to come in contact with me, please do write a message to me and I will get back to you as soon as I can :)</p>
+                <p style={{color: 'white'}}>If you want to come in contact with me, please do write a message to me and I will get back to you as soon as I can :)</p>
                     <div id="messageForm" className="messageForm">
                         <div id="greenSquare">
                             <div className="checkIcon"></div>
                         </div>
                         <form>
-                            <label className="formContent">First Name</label><br/>
-                            <input id="firstName" className="formContent" type="text" value={this.state.fName} onChange={this.handleFirstName} required />
+                            <input id="firstName" className="formContent" type="text" value={this.state.fName} onChange={this.handleFirstName} placeholder="Name" required />
                             <br/>
-                            <label className="formContent">Last Name</label><br/>
-                            <input id="lastName" className="formContent" type="text" onChange={this.handleLastName}  required/>
+                            <input id="lastName" className="formContent" type="text" onChange={this.handleLastName} placeholder="Subject" required/>
                             <br/>
-                            <label className="formContent">Email</label><br/>
-                            <input id="email" className="formContent" type="email"  onChange={this.handleEmail} required/><br/>
-                            <label className="formContent">Message</label><br/>
+                            <input id="email" className="formContent" type="email"  onChange={this.handleEmail} placeholder="Email" required/><br/>
 
                             <textarea id="messageField" className="formContent" type="text" onChange={this.handleMessage} placeholder="Write your message here.." required/><br/>
                             <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required</p>
-                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} {this.state.lName} for your message</p>
+                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} for your message</p>
 
                             <button id="submitBtn" className="formContent" type="submit" onClick={this.sendMessage}>Send message</button>
                         </form>
                     </div>
-                    <div>
+                    <div className="contact-details">
                         <p><Geolocation /><br/> Stockholm, Sweden</p>
                         <p><MailIcon /><br/>kevinlane3@hotmail.com</p>
                         <p><Telephone /><br/>+46 73 907 64 61</p>
