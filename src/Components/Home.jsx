@@ -5,7 +5,6 @@ import BackgroundImage from '../assets/images/stockholm.jpg';
 
 
 export default function Home(){
-
     useEffect(() => {
         document.body.style.backgroundImage = `url(${BackgroundImage})`;
         document.body.style.backgroundAttachment = 'fixed';
@@ -24,8 +23,6 @@ export default function Home(){
                 <Geolocation /><h2>BASED IN STOCKHOLM</h2>
             </div>
             <a className="contact-me-btn" href="/contact">Contact me</a>
-
-
         </div>
     );
 }
