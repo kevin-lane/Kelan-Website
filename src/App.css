@@ -264,6 +264,7 @@ body, html {
 
 /* Blog and Portfolio */
 .blog-post-item{
+  position: relative;
   float: left;
   margin: 20px;
   width: 400px;
@@ -286,4 +287,21 @@ body, html {
 
 .post-image > img[src=""] {
   display: none;
+}
+
+.time-stamp {
+  position: absolute;
+  /* border: 2px solid cornsilk; */
+  bottom: 0px;
+  width: 100%;
+  height: 10%;
+  background-color: cornsilk;
+  border-radius: 0px 0px 6px 6px;
+}
+
+#blog-post-publish-date{
+  font-family: monospace;
+  float: left;
+  color: gray;
+  padding: 13px;
 }
