@@ -9,13 +9,13 @@ export default class Contact extends Component{
     constructor(props){
         super(props);
         this.state={
-            fName: "",
-            lName: "",
+            name: "",
+            subject: "",
             email: "",
             message: ""
         }
         this.handleFirstName = this.handleFirstName.bind(this);
-        this.handleLastName = this.handleLastName.bind(this);
+        this.handleSubject = this.handleSubject.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handleMessage = this.handleMessage.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
@@ -34,15 +34,15 @@ export default class Contact extends Component{
                             <div className="checkIcon"></div>
                         </div>
                         <form>
-                            <input id="firstName" className="formContent" type="text" value={this.state.fName} onChange={this.handleFirstName} placeholder="Name" required />
+                            <input id="firstName" className="formContent" type="text" value={this.state.name} onChange={this.handleFirstName} placeholder="Name" required />
                             <br/>
-                            <input id="lastName" className="formContent" type="text" onChange={this.handleLastName} placeholder="Subject" required/>
+                            <input id="subject" className="formContent" type="text" onChange={this.handleSubject} placeholder="Subject" required/>
                             <br/>
                             <input id="email" className="formContent" type="email"  onChange={this.handleEmail} placeholder="Email" required/><br/>
 
                             <textarea id="messageField" className="formContent" type="text" onChange={this.handleMessage} placeholder="Write your message here.." required/><br/>
                             <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required</p>
-                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} for your message. <br/> (THIS FEAUTURE IS CURRENTLY NOT FUNCTIONAL YET. PLEASE SEND ME AN EMAIL INSTEAD)</p>
+                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.name} for your message. <br/> (THIS FEAUTURE IS CURRENTLY NOT FUNCTIONAL YET. PLEASE SEND ME AN EMAIL INSTEAD)</p>
 
                             <button id="submitBtn" className="formContent" type="submit" onClick={this.sendMessage}>Send message</button>
                         </form>
@@ -58,13 +58,13 @@ export default class Contact extends Component{
 
     handleFirstName(event){
         this.setState({
-            fName: event.target.value
+            name: event.target.value
         });
     }
 
-    handleLastName(event){
+    handleSubject(event){
         this.setState({
-            lName: event.target.value
+            subject: event.target.value
         });
     }
 
@@ -82,7 +82,7 @@ export default class Contact extends Component{
 
     sendMessage(event){
         var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
+        var subject = document.getElementById("subject").value;
         var email = document.getElementById("email").value;
         var message = document.getElementById("messageField").value;
 
@@ -94,12 +94,12 @@ export default class Contact extends Component{
         console.log(formContent);
  
 
-        if(firstName.length === 0 || lastName.length === 0 || email.length === 0 || message.length === 0){
+        if(firstName.length === 0 || subject.length === 0 || email.length === 0 || message.length === 0){
             document.getElementById("requiredNotice").style.display = "block";
         }
         else{
-            console.log("First Name: " + this.state.fName);
-            console.log("Last Name: " + this.state.lName);
+            console.log("First Name: " + this.state.name);
+            console.log("Subject: " + this.state.subject);
             console.log("Email: " + this.state.email);
             console.log("Message: " + this.state.message);
 
