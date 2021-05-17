@@ -42,7 +42,7 @@ export default class Contact extends Component{
 
                             <textarea id="messageField" className="formContent" type="text" onChange={this.handleMessage} placeholder="Write your message here.." required/><br/>
                             <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required</p>
-                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} for your message</p>
+                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.fName} for your message. <br/> (THIS FEAUTURE IS CURRENTLY NOT FUNCTIONAL YET. PLEASE SEND ME AN EMAIL INSTEAD)</p>
 
                             <button id="submitBtn" className="formContent" type="submit" onClick={this.sendMessage}>Send message</button>
                         </form>
