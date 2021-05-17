@@ -14,7 +14,7 @@ export default class Contact extends Component{
             email: "",
             message: ""
         }
-        this.handleFirstName = this.handleFirstName.bind(this);
+        this.handleName = this.handleName.bind(this);
         this.handleSubject = this.handleSubject.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handleMessage = this.handleMessage.bind(this);
@@ -34,7 +34,7 @@ export default class Contact extends Component{
                             <div className="checkIcon"></div>
                         </div>
                         <form>
-                            <input id="firstName" className="formContent" type="text" value={this.state.name} onChange={this.handleFirstName} placeholder="Name" required />
+                            <input id="userName" className="formContent" type="text" value={this.state.name} onChange={this.handleName} placeholder="Name" required />
                             <br/>
                             <input id="subject" className="formContent" type="text" onChange={this.handleSubject} placeholder="Subject" required/>
                             <br/>
@@ -56,7 +56,7 @@ export default class Contact extends Component{
         );
     }
 
-    handleFirstName(event){
+    handleName(event){
         this.setState({
             name: event.target.value
         });
@@ -81,7 +81,7 @@ export default class Contact extends Component{
     }
 
     sendMessage(event){
-        var firstName = document.getElementById("firstName").value;
+        var name = document.getElementById("userName").value;
         var subject = document.getElementById("subject").value;
         var email = document.getElementById("email").value;
         var message = document.getElementById("messageField").value;
@@ -94,7 +94,7 @@ export default class Contact extends Component{
         console.log(formContent);
  
 
-        if(firstName.length === 0 || subject.length === 0 || email.length === 0 || message.length === 0){
+        if(name.length === 0 || subject.length === 0 || email.length === 0 || message.length === 0){
             document.getElementById("requiredNotice").style.display = "block";
         }
         else{
