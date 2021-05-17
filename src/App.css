@@ -263,3 +263,27 @@ body, html {
 }
 
 /* Blog and Portfolio */
+.blog-post-item{
+  float: left;
+  margin: 20px;
+  width: 400px;
+  height: 400px;
+  max-height: 650px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 3px solid rgb(211, 211, 211, 0.6);
+  border-radius: 10px;
+}
+
+.blog-post-item > a {
+  text-decoration: none;
+  color: black;
+}
+
+.blog-post-item > a:hover {
+  color: green;
+}
+
+.post-image > img[src=""] {
+  display: none;
+}
