@@ -18,36 +18,7 @@ let posts = [
     { id: 10, date: `${timeStamp('2020', '9', '31', '19', '30')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
     { id: 11, date: `${timeStamp('2020', '10', '24', '19', '30')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
     { id: 12, date: `${timeStamp('2020', '11', '24', '19', '30')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-
 ];
-
-function timeStamp(yy, mm, dd, hour, minute){
-    let today = new Date();
-
-    function addZero(num){
-        return num < 10 ? `0${num}` : num;
-    }
-
-    today.setFullYear(yy);
-    today.setMonth(mm);
-    today.setDate(dd);
-
-    today.setHours(hour);
-    today.setMinutes(minute);
-
-    let yr = today.getFullYear();
-    let mo = addZero(today.getMonth() + 1);
-    let da = addZero(today.getDate());
-    let date = `${yr}-${mo}-${da}`;
-    console.log(`Todays date is ${date}`);
-
-    let hr = addZero(today.getHours());
-    let min = addZero(today.getMinutes());
-    let time = `${hr}:${min}`;
-    console.log(`Current time is: ${time}`);
-
-    return date + ' ' + time;
-}
 
 export default function Blog(props){
     const [hash, setHash] = useState(window.location.hash);
@@ -89,4 +60,32 @@ export default function Blog(props){
             })} 
         </div>
     )
+}
+
+function timeStamp(yy, mm, dd, hour, minute){
+    let today = new Date();
+
+    function addZero(num){
+        return num < 10 ? `0${num}` : num;
+    }
+
+    today.setFullYear(yy);
+    today.setMonth(mm);
+    today.setDate(dd);
+
+    today.setHours(hour);
+    today.setMinutes(minute);
+
+    let yr = today.getFullYear();
+    let mo = addZero(today.getMonth() + 1);
+    let da = addZero(today.getDate());
+    let date = `${yr}-${mo}-${da}`;
+    console.log(`Todays date is ${date}`);
+
+    let hr = addZero(today.getHours());
+    let min = addZero(today.getMinutes());
+    let time = `${hr}:${min}`;
+    console.log(`Current time is: ${time}`);
+
+    return date + ' ' + time;
 }

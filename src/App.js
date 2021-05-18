@@ -26,6 +26,7 @@ function App() {
     <div className="App">
       <NavigationBar className="Navbar" /> 
           {switchPage()}
+          <footer><p>&copy; {new Date().getFullYear()} Copyright: Kevin Lane</p></footer>
     </div>
   );
 }
