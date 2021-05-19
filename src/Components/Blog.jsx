@@ -23,6 +23,7 @@ let posts = [
 export default function Blog(props){
     const [hash, setHash] = useState(window.location.hash);
     //Handle events when URL hash changes and reload page without manually refresh page
+    console.log(hash);
     const hashHandler = () => {
         setHash((prevHash) => {
             const newHash = window.location.hash;
@@ -55,9 +56,9 @@ export default function Blog(props){
                                     </div>
                                 </div>
                             </ul>
-                        );                       
+                        );
+                        default: return null                       
                 }
-                return null;
             })} 
         </div>
     )

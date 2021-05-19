@@ -25,6 +25,7 @@ export default class Contact extends Component{
         document.body.style.backgroundImage = `url(${BackgroundImage})`;
         document.body.style.backgroundAttachment = 'fixed';
     }
+    
     render(){
         return(
             <div>
@@ -88,12 +89,8 @@ export default class Contact extends Component{
 
         //Specify all contents of the contact form
         var formContent = document.getElementsByClassName("formContent");
-
-
-
         console.log(formContent);
  
-
         if(name.length === 0 || subject.length === 0 || email.length === 0 || message.length === 0){
             document.getElementById("requiredNotice").style.display = "block";
         }

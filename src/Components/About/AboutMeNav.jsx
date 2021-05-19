@@ -12,7 +12,7 @@ export default function AboutNav(props){
                     window.location.reload();
                     return newHash;
                 }
-                return prevHash;
+                return hash;
             });
         };
         window.addEventListener('hashchange', hashHandler);
