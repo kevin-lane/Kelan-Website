@@ -57,6 +57,7 @@ export default function Blog(props){
                             </ul>
                         );                       
                 }
+                return null;
             })} 
         </div>
     )
