@@ -11,6 +11,7 @@ export default function About(){
     useEffect(() => {
         console.log("About Page working");
         document.body.style.backgroundImage = `url(${BackgroundImage})`;
+        document.body.style.backgroundAttachment = 'fixed';
     });
 
     return(
