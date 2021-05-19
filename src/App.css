@@ -84,7 +84,7 @@ body, html {
   position: absolute;
   width: 25%;
   bottom: 20%;
-  left: 40%;
+  left: 38%;
 }
 
 #location-section > h2 {
@@ -122,7 +122,7 @@ body, html {
   height: 30px;
   width: 165px;
   bottom: 10%;
-  left: 47%;
+  left: 45%;
   border: 2px solid rgb(237, 233, 232, .6);
   cursor: pointer;
   font-size: larger;
