@@ -155,6 +155,7 @@ body, html {
 
  #messageField { 
    min-height: 40px;
+   max-height: 150px;
    min-width: 500px;
    max-width: 500px; 
  } 
