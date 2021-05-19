@@ -51,7 +51,7 @@ export default function Blog(props){
                                         <h1>{post.heading}</h1>      
                                     </a>
                                     <div className="time-stamp">
-                                        <a id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></a>
+                                        <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
                                     </div>
                                 </div>
                             </ul>
@@ -65,6 +65,7 @@ export default function Blog(props){
 function timeStamp(yy, mm, dd, hour, minute){
     let today = new Date();
 
+    //Adds a 0 to a number if number is less than 10, e.g 8 should be 08
     function addZero(num){
         return num < 10 ? `0${num}` : num;
     }

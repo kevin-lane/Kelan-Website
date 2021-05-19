@@ -301,10 +301,11 @@ body, html {
 }
 
 #blog-post-publish-date{
+  position: absolute;
   font-family: monospace;
   float: left;
   color: gray;
-  padding: 13px;
+  left: 10px;
 }
 
 /* Copyright footer */
