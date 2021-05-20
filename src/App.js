@@ -3,8 +3,8 @@ import NavigationBar from './Components/Navigationbar';
 import Home from './Components/Home';
 import About from './Components/About';
 import Contact from './Components/Contact';
-import Portfolio from './Components/Portfolio';
 import Blog from './Components/Blog';
+import Projects from './Components/Projects';
 
 function App() {
   function switchPage(){
@@ -15,8 +15,8 @@ function App() {
         return( <Blog /> )
       case '/contact':
         return( <Contact />);
-      case '/portfolio':
-        return( <Portfolio /> )
+      case '/projects':
+        return( <Projects /> )
       default:
         return(<Home />);
     }
