@@ -37,7 +37,6 @@ export default function Blog(props){
 
     return(
         <div>  
-            <h2>My blog is currently under construction and I have no blog posts yet, so this is some mock data</h2>  
             {posts.map(post => {  
                 console.log(posts.length);
                 switch (window.location.hash) {
@@ -45,19 +44,21 @@ export default function Blog(props){
                         return( <BlogPost id={post.id} image={Image} date={post.date} heading={post.heading} introduction={post.introduction} entry={post.entry} /> );                    
                     case '':                        
                         return(
-                            <ul className="blog-posts">
-                                <div className="blog-post-item" >
-                                    <a id={post.id} href={`#${post.id}`}>
-                                        <img src={Image} alt="Girl in a jacket" width="400" height="200" />
-                                        <h1>{post.heading}</h1>      
-                                    </a>
-                                    <div className="time-stamp">
-                                        <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
+                           <div> 
+                                <ul className="blog-posts">
+                                    <div className="blog-post-item" >
+                                        <a id={post.id} href={`#${post.id}`}>
+                                            <img src={Image} alt="Girl in a jacket" width="400" height="200" />
+                                            <h1>{post.heading}</h1>      
+                                        </a>
+                                        <div className="time-stamp">
+                                            <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </ul>
+                                </ul>
+                            </div>
                         );
-                        default: return null                       
+                    default: return null                       
                 }
             })} 
         </div>
