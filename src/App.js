@@ -21,8 +21,6 @@ function App() {
         return( <Contact />);
       case '#projects':
         return( <Projects /> );
-        case '#portfolio':
-          return( <Home /> );
       default:
         return(<Home />);
     }
