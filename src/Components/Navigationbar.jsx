@@ -8,7 +8,7 @@ export default function NavigationBar(){
     return(
         <div className="Navbar">
             <ul>
-                <a href="/">HOME</a>
+                <a href="/portfolio">HOME</a>
                 <a href="#about">ABOUT</a>
                 <a href="#blog">BLOG</a>
                 <a href="#projects">PROJECTS</a>
