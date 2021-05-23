@@ -9,10 +9,10 @@ export default function NavigationBar(){
         <div className="Navbar">
             <ul>
                 <a href="/">HOME</a>
-                <a href="/portfolio/about">ABOUT</a>
-                <a href="/portfolio/blog">BLOG</a>
-                <a href="/portfolio/projects">PROJECTS</a>
-                <a href="/portfolio/contact">CONTACT</a>
+                <a href="#about">ABOUT</a>
+                <a href="#blog">BLOG</a>
+                <a href="#projects">PROJECTS</a>
+                <a href="#contact">CONTACT</a>
                 <a className="svgNavs" href="https://www.linkedin.com/in/kevin-lane-884950a7/" target="_blank" rel="noreferrer"><LinkedIn></LinkedIn></a>
                 <a className="svgNavs" href="https://github.com/kevin-lane" target="_blank" rel="noreferrer"><GitHub></GitHub></a>
             </ul>

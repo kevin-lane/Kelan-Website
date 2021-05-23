@@ -8,16 +8,16 @@ import Projects from './Components/Projects';
 
 function App() {
   function switchPage(){
-    switch (window.location.pathname) {
-      case '/portfolio/about':
+    switch (window.location.hash) {
+      case '#about':
         return( <About />);
-      case '/portfolio/blog':
+      case '#blog':
         return( <Blog /> )
-      case '/portfolio/contact':
+      case '#contact':
         return( <Contact />);
-      case '/portfolio/projects':
+      case '#projects':
         return( <Projects /> );
-        case '/portfolio':
+        case '#':
           return( <Home /> );
       default:
         return(<Home />);

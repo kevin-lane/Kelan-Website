@@ -254,12 +254,12 @@ body, html {
   cursor: pointer;
 }
 
-.about-nav-bar li a{
+.about-nav-bar li span{
   text-decoration: none;
   color: #61dafb;
 }
 
-.about-nav-bar li a:hover {
+.about-nav-bar li span:hover {
   color: yellow;
 }
 

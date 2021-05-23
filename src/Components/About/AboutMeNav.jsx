@@ -23,10 +23,10 @@ export default function AboutNav(props){
 export function Sections(props){
     return(
             <ul className="about-nav-bar">
-                <Section text="ABOUT ME" href="#aboutme"></Section>
-                <Section text="SKILLS" href="#skills"></Section>
-                <Section text="CAREER" href="#career"></Section>
-                <Section text="EDUCATION" href="#education"></Section>
+                <Section text="ABOUT ME" ></Section>
+                <Section text="SKILLS" ></Section>
+                <Section text="CAREER" ></Section>
+                <Section text="EDUCATION" ></Section>
             </ul>
     );
 }
@@ -34,7 +34,7 @@ export function Sections(props){
 export function Section(props){
     return(
         <li>
-            <a href={props.href}>{props.text}</a>
+            <a href={props.href} onClick={props.click}>{props.text}</a>
         </li>
     );
 }

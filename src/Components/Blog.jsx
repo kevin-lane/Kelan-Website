@@ -40,9 +40,9 @@ export default function Blog(props){
             {posts.map(post => {  
                 console.log(posts.length);
                 switch (window.location.hash) {
-                    case `#${post.id}`:
+                    case `blog#${post.id}`:
                         return( <BlogPost id={post.id} image={Image} date={post.date} heading={post.heading} introduction={post.introduction} entry={post.entry} /> );                    
-                    case '':                        
+                    default:                        
                         return(
                            <div> 
                                 <ul className="blog-posts">
@@ -58,7 +58,7 @@ export default function Blog(props){
                                 </ul>
                             </div>
                         );
-                    default: return null                       
+                    // default: return null                       
                 }
             })} 
         </div>
