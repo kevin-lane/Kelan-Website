@@ -3,7 +3,6 @@ import '../App.css';
 import Geolocation from '../assets/svg/GeolocationIcon';
 import BackgroundImage from '../assets/images/stockholm.jpg';
 
-
 export default function Home(){
     useEffect(() => {
         document.body.style.backgroundImage = `url(${BackgroundImage})`;
@@ -22,7 +21,7 @@ export default function Home(){
             <div id="location-section" className="presentation-content">
                 <Geolocation /><h2>BASED IN STOCKHOLM</h2>
             </div>
-            <a className="contact-me-btn" href="/contact">Contact me</a>
+            <a className="contact-me-btn" href="#contact">Contact me</a>
         </div>
     );
 }
