@@ -8,6 +8,10 @@ import Projects from './Components/Projects';
 
 function App() {
   function switchPage(){
+    window.onhashchange = function(){
+      window.location.reload();
+    }
+    
     switch (window.location.hash) {
       case '#about':
         return( <About />);
@@ -17,7 +21,7 @@ function App() {
         return( <Contact />);
       case '#projects':
         return( <Projects /> );
-        case '#':
+        case '#portfolio':
           return( <Home /> );
       default:
         return(<Home />);
