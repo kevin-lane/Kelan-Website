@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import {db} from '../firebase';
 import Geolocation from '../assets/svg/GeolocationIcon';
 import MailIcon from '../assets/svg/MailIcon';
 import Telephone from '../assets/svg/TelephoneIcon';
@@ -35,15 +36,41 @@ export default class Contact extends Component{
                             <div className="checkIcon"></div>
                         </div>
                         <form>
-                            <input id="userName" className="formContent" type="text" value={this.state.name} onChange={this.handleName} placeholder="Name" required />
+                            <input 
+                                id="userName" 
+                                className="formContent" 
+                                type="text" 
+                                value={this.state.name} 
+                                onChange={this.handleName} 
+                                placeholder="Name" 
+                                required />
                             <br/>
-                            <input id="subject" className="formContent" type="text" onChange={this.handleSubject} placeholder="Subject" required/>
+                            <input 
+                                id="subject" 
+                                className="formContent" 
+                                type="text" 
+                                onChange={this.handleSubject} 
+                                placeholder="Subject" 
+                                required/>
                             <br/>
-                            <input id="email" className="formContent" type="email"  onChange={this.handleEmail} placeholder="Email" required/><br/>
+                            <input 
+                                id="email" 
+                                className="formContent" 
+                                type="email"  
+                                onChange={this.handleEmail} 
+                                placeholder="Email" 
+                            /><br/>
 
-                            <textarea id="messageField" className="formContent" type="text" onChange={this.handleMessage} placeholder="Write your message here.." required/><br/>
+                            <textarea 
+                                id="messageField" 
+                                className="formContent" 
+                                type="text" 
+                                onChange={this.handleMessage} 
+                                placeholder="Write your message here.." 
+                                required/><br/>
                             <p id="requiredNotice" style={{color: 'red', display: 'none'}}>All fields are required</p>
-                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.name} for your message. <br/> (THIS FEAUTURE IS CURRENTLY NOT FUNCTIONAL YET. PLEASE SEND ME AN EMAIL INSTEAD)</p>
+                            <p id="emailNotice" style={{color: 'red', display: 'none'}}>Invalid Email format, use name@domain.xx or name@domain.xx.yy</p>
+                            <p id="sentNotice" style={{display: 'none'}}>Thank you {this.state.name} for your message.</p>
 
                             <button id="submitBtn" className="formContent" type="submit" onClick={this.sendMessage}>Send message</button>
                         </form>
@@ -58,24 +85,29 @@ export default class Contact extends Component{
     }
 
     handleName(event){
+        document.getElementById("requiredNotice").style.display = "none";
         this.setState({
             name: event.target.value
         });
     }
 
     handleSubject(event){
+        document.getElementById("requiredNotice").style.display = "none";
         this.setState({
             subject: event.target.value
         });
     }
 
     handleEmail(event){
+        document.getElementById("requiredNotice").style.display = "none";
+        document.getElementById("emailNotice").style.display = "none"
         this.setState({
             email: event.target.value
         });
     }
 
     handleMessage(event){
+        document.getElementById("requiredNotice").style.display = "none";
         this.setState({
             message: event.target.value
         });
@@ -89,39 +121,50 @@ export default class Contact extends Component{
 
         //Specify all contents of the contact form
         var formContent = document.getElementsByClassName("formContent");
-        console.log(formContent);
- 
+        var emailRegx = /^([a-z0-9._%+-])+@([a-z0-9.-])+\.([a-z]{2,})$/; //Regular expression for email
+        console.log(emailRegx.test(this.state.email));
         if(name.length === 0 || subject.length === 0 || email.length === 0 || message.length === 0){
             document.getElementById("requiredNotice").style.display = "block";
         }
-        else{
-            console.log("First Name: " + this.state.name);
-            console.log("Subject: " + this.state.subject);
-            console.log("Email: " + this.state.email);
-            console.log("Message: " + this.state.message);
-
-            //Hide the contents of the form while check animation pops up after sending message
-            for (let i = 0; i < formContent.length; i++) {
-                formContent[i].style.visibility = "hidden";
-            }
-            
-            document.getElementById("requiredNotice").style.display = "none";
-            document.getElementById("greenSquare").style.display = "block";
-            document.getElementById("sentNotice").style.display = "block";
-            setTimeout(() => {
-                document.getElementById("greenSquare").style.display = "none";
-                document.getElementById("sentNotice").style.display = "none";
-
-                for (let i = 0; i < formContent.length; i++) {
-                    formContent[i].style.visibility = "visible";  
-                    if (formContent[i].localName === "input" || formContent[i].localName === "textarea") {
-                        formContent[i].value = ''
-                        console.log(formContent[i].type);
-                    }
-                }
-
-            }, 5000);
+        
+        //If entered email does not match according to the regular expression specified, prevent sending message
+        else if(!emailRegx.test(this.state.email)){
+            document.getElementById("emailNotice").style.display = "block";
         }
+
+        else{
+            //Store messages in Firebase database collection
+            db.collection('messages').add({
+                name: this.state.name,
+                subject: this.state.subject,
+                email: this.state.email,
+                message: this.state.message
+            })
+            .then(() => {
+                //Hide the contents of the form while check animation pops up after sending message
+                for (let i = 0; i < formContent.length; i++) {
+                    formContent[i].style.visibility = "hidden";
+                }
+            
+                document.getElementById("requiredNotice").style.display = "none";
+                document.getElementById("greenSquare").style.display = "block";
+                document.getElementById("sentNotice").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("greenSquare").style.display = "none";
+                    document.getElementById("sentNotice").style.display = "none";
+
+                    for (let i = 0; i < formContent.length; i++) {
+                        formContent[i].style.visibility = "visible";  
+                        if (formContent[i].localName === "input" || formContent[i].localName === "textarea") {
+                            formContent[i].value = ''
+                        }
+                    }
+                }, 5000);
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        };
         event.preventDefault();
     }
 }
