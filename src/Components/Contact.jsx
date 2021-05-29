@@ -100,7 +100,7 @@ export default class Contact extends Component{
 
     handleEmail(event){
         document.getElementById("requiredNotice").style.display = "none";
-        document.getElementById("emailNotice").style.display = "none"
+        document.getElementById("emailNotice").style.display = "none";
         this.setState({
             email: event.target.value
         });
@@ -138,7 +138,8 @@ export default class Contact extends Component{
                 name: this.state.name,
                 subject: this.state.subject,
                 email: this.state.email,
-                message: this.state.message
+                message: this.state.message,
+                Time: new Date()
             })
             .then(() => {
                 //Hide the contents of the form while check animation pops up after sending message
