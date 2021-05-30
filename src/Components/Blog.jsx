@@ -84,12 +84,12 @@ function timeStamp(yy, mm, dd, hour, minute){
     let mo = addZero(today.getMonth() + 1);
     let da = addZero(today.getDate());
     let date = `${yr}-${mo}-${da}`;
-    console.log(`Todays date is ${date}`);
+    // console.log(`Todays date is ${date}`);
 
     let hr = addZero(today.getHours());
     let min = addZero(today.getMinutes());
     let time = `${hr}:${min}`;
-    console.log(`Current time is: ${time}`);
+    // console.log(`Current time is: ${time}`);
 
     return date + ' ' + time;
 }
