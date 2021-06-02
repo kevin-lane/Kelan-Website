@@ -21,44 +21,31 @@ let posts = [
 ];
 
 export default function Blog(props){
-    const [hash, setHash] = useState(window.location.hash);
-    //Handle events when URL hash changes and reload page without manually refresh page
-    console.log(hash);
-    const hashHandler = () => {
-        setHash((prevHash) => {
-            const newHash = window.location.hash;
-            if(prevHash !== newHash){
-                return newHash;
-            }
-            return prevHash;
-        });
-    };
-    window.addEventListener('hashchange', hashHandler);
+    const [blogPost, showBlogPost] = useState(null);
 
     return(
         <div>  
             {posts.map(post => {  
                 console.log(posts.length);
-                switch (window.location.hash) {
-                    case `blog#${post.id}`:
-                        return( <BlogPost id={post.id} image={Image} date={post.date} heading={post.heading} introduction={post.introduction} entry={post.entry} /> );                    
-                    default:                        
+                switch (blogPost) {
+                    case post.id:
+                        return( <BlogPost goBack={() => showBlogPost(null)} id={post.id} image={Image} date={post.date} heading={post.heading} introduction={post.introduction} entry={post.entry} /> );   
+                        
+                    case null: 
                         return(
-                           <div> 
-                                <ul className="blog-posts">
-                                    <div className="blog-post-item" >
-                                        <a id={post.id} href={`#${post.id}`}>
-                                            <img src={Image} alt="Girl in a jacket" width="400" height="200" />
-                                            <h1>{post.heading}</h1>      
-                                        </a>
-                                        <div className="time-stamp">
-                                            <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
-                                        </div>
-                                    </div>
-                                </ul>
-                            </div>
-                        );
-                    // default: return null                       
+                            <div> 
+                                 <ul className="blog-posts">
+                                     <div className="blog-post-item" onClick={() => showBlogPost(post.id)}>
+                                             <img src={Image}  alt="Girl in a jacket" width="400" height="200" />
+                                             <h1>{post.heading}</h1>      
+                                         <div className="time-stamp">
+                                             <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
+                                         </div>
+                                     </div>
+                                 </ul>
+                             </div>
+                         );
+                    default: return null
                 }
             })} 
         </div>

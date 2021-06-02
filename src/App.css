@@ -265,6 +265,10 @@ body, html {
 
 /* Blog and Projects */
 
+.return-back-btn{
+  cursor: pointer;
+}
+
 .blog-post-item{
   position: relative;
   float: left;
@@ -276,6 +280,7 @@ body, html {
   text-decoration: none;
   border: 3px solid rgb(211, 211, 211, 0.6);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .blog-post-item > a {
