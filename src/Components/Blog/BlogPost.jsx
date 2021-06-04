@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 export default function BlogPost(props){
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
     return(
         <div id={props.id} className="blog-post">
             <span className="return-back-btn" onClick={props.goBack}>Back</span>
