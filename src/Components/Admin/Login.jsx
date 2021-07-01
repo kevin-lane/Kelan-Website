@@ -51,18 +51,16 @@ export default function Login(){
                 <div>
                     <h2>Admin is logged in</h2>
                     <span className="close-modal" onClick={closeModal}>&times;</span>
-                    <button onClick={adminLogOut}>Log out</button>
+                    <button className="login-button" onClick={adminLogOut}>Log out</button>
                 </div>
                 :
                 <div>
                     <h2>Admin Login</h2>
                     <span className="close-modal" onClick={closeModal}>&times;</span>
                     <form >
-                        <label>Username</label><br />
-                        <input id="username" type="text" placeholder="Enter Username" onChange={(e) => setUsername(e.target.value)} required></input><br />
-                        <label>Password</label><br />
-                        <input id="password" type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} required></input><br />
-                        <button type="submit" onClick={adminLoggedIn}>Login</button>
+                        <input id="username" className="login-input" type="text" placeholder="Enter Username" onChange={(e) => setUsername(e.target.value)} required></input><br />
+                        <input id="password" className="login-input" type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} required></input><br />
+                        <button className="login-button" type="submit" onClick={adminLoggedIn}>Log in</button>
                     </form>
                 </div>
             }

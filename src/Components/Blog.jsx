@@ -5,6 +5,7 @@ import BlogPost from './Blog/BlogPost';
 import Image from '../assets/images/blog-mock-images/bench.jpg';
 import ClockIcon from '../assets/svg/ClockIcon';
 import TrashIcon from '../assets/svg/TrashIcon';
+import PlusLgIcon from '../assets/svg/PlusLgIcon';
 
 const user = window.localStorage.getItem("uname");
 const pass = window.localStorage.getItem("pswrd");
@@ -80,17 +81,14 @@ function DeleteBlogPost(e, postID){
 function CreateBlogPost(){
         return(
             <div>
-                <button onClick={() => document.getElementById("blog-post-modal").style.display = 'block'}>+Create Blog Post</button>
+                <button className="create-blog-post-button" onClick={() => document.getElementById("blog-post-modal").style.display = 'block'}><PlusLgIcon></PlusLgIcon> Create Blog Post</button>
                 <div id="blog-post-modal">
                     <span className="close-modal" onClick={() => document.getElementById("blog-post-modal").style.display = 'none'}>&times;</span>
                     <form action="">
-                        <label htmlFor="">Heading</label>
-                        <input type="text" id="blog-post-heading-field"/><br/>
-                        <label htmlFor="">Introduction</label>
-                        <input type="text" name="introduction" id="blog-post-introduction-field" /><br/>
-                        <label htmlFor="">Entry</label>
-                        <textarea name="entry" id="blog-post-entry-field" cols="30" rows="10"></textarea><br />
-                        <button type="submit" onClick={SubmitBlogPost}>Submit post</button>
+                        <input className="blog-post-input" type="text" placeholder="Heading" id="blog-post-heading-field"/><br/>
+                        <input className="blog-post-input" type="text" placeholder="Introduction" name="introduction" id="blog-post-introduction-field" /><br/>
+                        <textarea className="blog-post-input" name="entry" placeholder="Entry" id="blog-post-entry-field" cols="30" rows="10"></textarea><br />
+                        <button className="blog-post-submit-button" type="submit" onClick={SubmitBlogPost}>Submit post</button>
                     </form>
                 </div>
             </div>

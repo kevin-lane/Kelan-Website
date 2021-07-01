@@ -55,6 +55,23 @@ body, html {
   z-index: 1;
 }
 
+.login-input{
+  width: 400px;
+  height: 50px;
+  margin: 20px;
+  border: 1px solid lightblue;
+  border-radius: 10px;
+  font-size: 130%;
+}
+
+.login-button{
+  width: 400px;
+  height: 60px;
+  background-color: blue;
+  color: whitesmoke;
+  font-size: 200%;
+}
+
 .close-modal{
   color: gray;
   cursor: pointer;
@@ -322,10 +339,16 @@ body, html {
   cursor: pointer;
 }
 
-
 .blog-post-item > a {
   text-decoration: none;
   color: black;
+}
+
+.create-blog-post-button{
+  background-color: lightblue;
+  width: 200px;
+  margin: 10px;
+  
 }
 
 #blog-post-modal{
@@ -337,6 +360,25 @@ body, html {
   top: 20%;
   left: 25%;
   z-index: 1;
+}
+
+.blog-post-input{
+  width: 400px;
+  margin: 10px;
+  border: 1px solid lightblue;
+}
+
+#blog-post-entry-field{
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 160px;
+}
+
+.blog-post-submit-button{
+  width: 350px;
+  height: 25px;
+  background-color: green;
+  color: whitesmoke;
 }
 
 .blog-post-item > a:hover {
