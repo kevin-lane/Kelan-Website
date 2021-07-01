@@ -37,6 +37,37 @@ body, html {
   bottom: 18px;
 }
 
+#login-admin {
+  cursor: pointer;
+  height: 59px;
+  left: 2px;
+}
+/* Login panel */
+#login-modal {
+  display: none;
+  margin: auto; 
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  z-index: 1;
+}
+
+.close-modal{
+  color: gray;
+  cursor: pointer;
+  position: absolute;
+  float: right;
+  top: 5%;
+  right: 5%;
+  font-size: 45px;
+}
+
+.close-modal:hover{
+  color: black;
+}
 /* Home */
 .presentation-content{
   float: left;
@@ -267,6 +298,14 @@ body, html {
 
 .return-back-btn{
   cursor: pointer;
+  float: left;
+  left: 50px;
+  position: fixed;
+  background-color: darkgoldenrod;
+  color: antiquewhite;
+  width: 5%;
+  height: 3%;
+  border-radius: 15px;
 }
 
 .blog-post-item{
@@ -283,9 +322,21 @@ body, html {
   cursor: pointer;
 }
 
+
 .blog-post-item > a {
   text-decoration: none;
   color: black;
+}
+
+#blog-post-modal{
+  display: none;
+  background-color: aqua;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  z-index: 1;
 }
 
 .blog-post-item > a:hover {

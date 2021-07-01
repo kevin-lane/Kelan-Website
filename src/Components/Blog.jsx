@@ -1,55 +1,113 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
+import {db} from '../firebase';
 import BlogPost from './Blog/BlogPost';
 import Image from '../assets/images/blog-mock-images/bench.jpg';
 import ClockIcon from '../assets/svg/ClockIcon';
+import TrashIcon from '../assets/svg/TrashIcon';
 
-//Mock data
-let posts = [
-    { id: 1, date: `${timeStamp('2020', '0', '16', '23', '59')}`, heading: "Lorem Ipsum Color blablabla", introduction:"consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim cras tincidunt lobortis. Amet porttitor eget dolor morbi.", entry:"Dvfdvfdvfdvdvfv cde dignissim enim sit."},
-    { id: 2, date: `${timeStamp('2020', '1', '11', '1', '30')}`, heading: "Lorem Ipsum Color lalalalalal", introduction:"consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.", entry:"Dweretyetteytrque dignissim enim sit."},
-    { id: 3, date: `${timeStamp('2020', '1', '30', '9', '15')}`, heading: "Lorem Ipsum Color bobobobobbobo", introduction:"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Integer quis auctor elit sed vulputate mi sit. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 4, date: `${timeStamp('2020', '3', '11', '10', '10')}`, heading: "Lorem Ipsum Color unudslkkdslkfjdsjkfjkcs cdfssewswededes dscd", introduction:"sed csdcdscsdcsddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 5, date: `${timeStamp('2020', '4', '13', '7', '0')}`, heading: "Lorem Ipsum Color unudslkkdslkfjdsjkfjkcs ", introduction:"sed csdcdscsdcsddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 6, date: `${timeStamp('2020', '5', '10', '0', '0')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 7, date: `${timeStamp('2020', '6', '6', '12', '0')}`, heading: "Lorem Ipsum Color unudslkkdslkfjdsjkfjkcs cdfssewswededes dscdfdvfv vfdvfdvdfvdfvcdcdcdvf", introduction:"sed csdcdscsdcsddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 8, date: `${timeStamp('2020', '7', '1', '0', '0')}`, heading: "Lorem Ipsum Color unudslkkdslkfjdsjkfjkcs ", introduction:"sed csdcdscsdcsddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 9, date: `${timeStamp('2020', '8', '30', '11', '0')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 10, date: `${timeStamp('2020', '9', '31', '19', '30')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 11, date: `${timeStamp('2020', '10', '24', '19', '30')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-    { id: 12, date: `${timeStamp('2020', '11', '24', '19', '30')}`, heading: "Lorem Ipsum Drums", introduction:"Yt labore et dolore magna aliqua. Ullamcorper dignissim crolor morbi.", entry:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Hendrerit gravida rutrum quisque non tellus orci ac. Maecenas ultricies mi eget mauris pharetra. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sagittis aliquam malesuada bibendum arcu. Mauris pharetra et ultrices neque ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ullamcorper a lacus vestibulum sed arcu. Turpis tincidunt id aliquet risus feugiat. Risus viverra adipiscing at in tellus integer. Dui vivamus arcu felis bibendum ut. Non blandit massa enim nec dui nunc. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Placerat vestibulum lectus mauris ultrices. Quis vel eros donec ac odio tempor. Non consectetur a erat nam at lectus urna duis. Tortor dignissim convallis aenean et tortor at risus. Facilisis volutpat est velit egestas dui id. Integer eget aliquet nibh praesent tristique magna sit amet. Lobortis feugiat vivamus at augue eget. Metus dictum at tempor commodo ullamcorper a. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Elementum eu facilisis sed odio morbi quis commodo odio aenean. Hendrerit dolor magna eget est lorem. Non odio euismod lacinia at quis. Quis blandit turpis cursus in hac habitasse platea dictumst quisque."},
-];
+const user = window.localStorage.getItem("uname");
+const pass = window.localStorage.getItem("pswrd");
 
 export default function Blog(props){
     const [blogPost, showBlogPost] = useState(null);
+    const [blogPosts, setBlogPosts] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        var blogPostsRef =  db.collection('blogposts');
+
+        blogPostsRef.get().then(posts => {
+            const newBlogPosts = [];
+            console.log(posts.docs.length);
+            posts.docs.forEach(post => {
+                console.log(post.id);
+                //Put in id for the document easily accessible
+                blogPostsRef.doc(post.id).set({
+                    id: post.id,
+                    date: post.data().date,
+                    entry: post.data().entry,
+                    heading: post.data().heading,
+                    introduction: post.data().introduction
+                });
+                newBlogPosts.push(post.data());
+
+            })
+            setBlogPosts(newBlogPosts);  
+            console.log(blogPosts);
+        })
+        if (user === process.env.REACT_APP_ADMIN_USERNAME && pass === process.env.REACT_APP_ADMIN_PASSWORD) {
+            setLoggedIn(true);
+        }
+    }, [])
 
     return(
         <div>  
-            {posts.map(post => {  
-                console.log(posts.length);
-                switch (blogPost) {
-                    case post.id:
-                        return( <BlogPost goBack={() => showBlogPost(null)} id={post.id} image={Image} date={post.date} heading={post.heading} introduction={post.introduction} entry={post.entry} /> );   
-                        
-                    case null: 
-                        return(
-                            <div> 
-                                 <ul className="blog-posts">
-                                     <div className="blog-post-item" onClick={() => showBlogPost(post.id)}>
-                                             <img src={Image}  alt="Girl in a jacket" width="400" height="200" />
-                                             <h1>{post.heading}</h1>      
-                                         <div className="time-stamp">
-                                             <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
-                                         </div>
-                                     </div>
-                                 </ul>
-                             </div>
-                         );
-                    default: return null
-                }
-            })} 
+            {loggedIn ? CreateBlogPost() : null}
+                {blogPosts.map(post => {                  
+                        switch (blogPost) {
+                            case post.id:
+                                console.log(post.id);
+                                return( <BlogPost goBack={() => showBlogPost(null)} id={post.id} date={post.date} heading={post.heading} introduction={post.introduction} entry={post.entry} /> );   
+                            case null: 
+                                return(
+                                    <div> 
+                                         <ul className="blog-posts">
+                                             <li id={post.id} className="blog-post-item" onClick={() => showBlogPost(post.id)}>
+                                                <img src={Image}  alt="Girl in a jacket" width="400" height="200" />
+                                                <h1 id="blog-post-heading">{post.heading}</h1>
+                                                {loggedIn ? <button onClick={(e) => DeleteBlogPost(e, post.id)}><TrashIcon></TrashIcon> </button> : null}     
+                                                <div className="time-stamp">
+                                                     <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
+                                                </div>
+                                             </li>
+                                         </ul>
+                                    </div>
+                                );           
+                            default: return null
+                        }
+                })}
         </div>
     )
+}
+
+function DeleteBlogPost(e, postID){
+    e.stopPropagation();
+    alert(`Item with id ${postID} has been deleted`);
+    db.collection('blogposts').doc(postID).delete();
+}
+
+function CreateBlogPost(){
+        return(
+            <div>
+                <button onClick={() => document.getElementById("blog-post-modal").style.display = 'block'}>+Create Blog Post</button>
+                <div id="blog-post-modal">
+                    <span className="close-modal" onClick={() => document.getElementById("blog-post-modal").style.display = 'none'}>&times;</span>
+                    <form action="">
+                        <label htmlFor="">Heading</label>
+                        <input type="text" id="blog-post-heading-field"/><br/>
+                        <label htmlFor="">Introduction</label>
+                        <input type="text" name="introduction" id="blog-post-introduction-field" /><br/>
+                        <label htmlFor="">Entry</label>
+                        <textarea name="entry" id="blog-post-entry-field" cols="30" rows="10"></textarea><br />
+                        <button type="submit" onClick={SubmitBlogPost}>Submit post</button>
+                    </form>
+                </div>
+            </div>
+        );
+}
+
+function SubmitBlogPost(e){
+    e.preventDefault();
+    db.collection('blogposts').add({
+        id: '',
+        date: `${timeStamp()}`,
+        heading: document.getElementById("blog-post-heading-field").value,
+        introduction: document.getElementById("blog-post-introduction-field").value,
+        entry: document.getElementById("blog-post-entry-field").value
+    }).then((post) => {
+        alert("Blog post added");
+    });
 }
 
 function timeStamp(yy, mm, dd, hour, minute){
@@ -60,23 +118,16 @@ function timeStamp(yy, mm, dd, hour, minute){
         return num < 10 ? `0${num}` : num;
     }
 
-    today.setFullYear(yy);
-    today.setMonth(mm);
-    today.setDate(dd);
-
-    today.setHours(hour);
-    today.setMinutes(minute);
-
     let yr = today.getFullYear();
     let mo = addZero(today.getMonth() + 1);
     let da = addZero(today.getDate());
     let date = `${yr}-${mo}-${da}`;
-    // console.log(`Todays date is ${date}`);
+    console.log(`Todays date is ${date}`);
 
     let hr = addZero(today.getHours());
     let min = addZero(today.getMinutes());
     let time = `${hr}:${min}`;
-    // console.log(`Current time is: ${time}`);
+    console.log(`Current time is: ${time}`);
 
     return date + ' ' + time;
 }

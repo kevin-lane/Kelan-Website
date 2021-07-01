@@ -113,11 +113,16 @@ export default class Contact extends Component{
         });
     }
 
+    addZero(num){
+        return num < 10 ? `0${num}` : num;
+    }
+
     sendMessage(event){
         var name = document.getElementById("userName").value;
         var subject = document.getElementById("subject").value;
         var email = document.getElementById("email").value;
         var message = document.getElementById("messageField").value;
+        var time = new Date();
 
         //Specify all contents of the contact form
         var formContent = document.getElementsByClassName("formContent");
@@ -139,7 +144,7 @@ export default class Contact extends Component{
                 subject: this.state.subject,
                 email: this.state.email,
                 message: this.state.message,
-                Time: new Date()
+                Time: time.getFullYear() + '-' + this.addZero(time.getMonth() + 1) + '-' + this.addZero(time.getDate()) + ' ' + this.addZero(time.getHours()) + ':' + this.addZero(time.getMinutes())
             })
             .then(() => {
                 //Hide the contents of the form while check animation pops up after sending message
@@ -161,6 +166,7 @@ export default class Contact extends Component{
                         }
                     }
                 }, 5000);
+
             })
             .catch(error => {
                 alert(error.message);
