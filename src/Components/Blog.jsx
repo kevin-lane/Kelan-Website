@@ -105,6 +105,7 @@ function SubmitBlogPost(e){
         entry: document.getElementById("blog-post-entry-field").value
     }).then((post) => {
         alert("Blog post added");
+        document.getElementById("blog-post-modal").style.display = 'none'
     });
 }
 
