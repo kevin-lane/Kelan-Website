@@ -76,6 +76,7 @@ function DeleteBlogPost(e, postID){
     e.stopPropagation();
     alert(`Item with id ${postID} has been deleted`);
     db.collection('blogposts').doc(postID).delete();
+    window.location.reload();
 }
 
 function CreateBlogPost(){
@@ -85,9 +86,9 @@ function CreateBlogPost(){
                 <div id="blog-post-modal">
                     <span className="close-modal" onClick={() => document.getElementById("blog-post-modal").style.display = 'none'}>&times;</span>
                     <form action="">
-                        <input className="blog-post-input" type="text" placeholder="Heading" id="blog-post-heading-field"/><br/>
+                        <input className="blog-post-input" type="text" placeholder="Heading" id="blog-post-heading-field" required/><br/>
                         <input className="blog-post-input" type="text" placeholder="Introduction" name="introduction" id="blog-post-introduction-field" /><br/>
-                        <textarea className="blog-post-input" name="entry" placeholder="Entry" id="blog-post-entry-field" cols="30" rows="10"></textarea><br />
+                        <textarea className="blog-post-input" name="entry" placeholder="Entry" id="blog-post-entry-field" required cols="30" rows="10"></textarea><br />
                         <button className="blog-post-submit-button" type="submit" onClick={SubmitBlogPost}>Submit post</button>
                     </form>
                 </div>
@@ -96,17 +97,27 @@ function CreateBlogPost(){
 }
 
 function SubmitBlogPost(e){
+    var heading = document.getElementById("blog-post-heading-field").value;
+    var intro = document.getElementById("blog-post-introduction-field").value;
+    var entry = document.getElementById("blog-post-entry-field").value;
+
     e.preventDefault();
-    db.collection('blogposts').add({
-        id: '',
-        date: `${timeStamp()}`,
-        heading: document.getElementById("blog-post-heading-field").value,
-        introduction: document.getElementById("blog-post-introduction-field").value,
-        entry: document.getElementById("blog-post-entry-field").value
-    }).then((post) => {
-        alert("Blog post added");
-        document.getElementById("blog-post-modal").style.display = 'none'
-    });
+    if(heading === "" || /^\s/.test(heading) || entry === "" || /^\s/.test(entry)){
+        alert("Heading and entry are required. No empty white space allowed.");
+    }
+    else{
+        db.collection('blogposts').add({
+            id: '',
+            date: `${timeStamp()}`,
+            heading: heading,
+            introduction: intro,
+            entry: entry
+        }).then((post) => {
+            alert("Blog post added");
+            document.getElementById("blog-post-modal").style.display = 'none';
+            window.location.reload();
+        });
+    }
 }
 
 function timeStamp(yy, mm, dd, hour, minute){
