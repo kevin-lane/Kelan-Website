@@ -28,6 +28,7 @@ export default function Login(){
         else{
             alert("Logged in");
             setLoggedIn(true);
+            window.location.reload();
         }
         e.preventDefault();
     }
@@ -38,6 +39,7 @@ export default function Login(){
         setPassword("");
         window.localStorage.removeItem('uname');
         window.localStorage.removeItem('pswrd');
+        window.location.reload();
     }
 
     return(
