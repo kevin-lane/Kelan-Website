@@ -20,9 +20,7 @@ export default function Blog(props){
 
         blogPostsRef.get().then(posts => {
             const newBlogPosts = [];
-            console.log(posts.docs.length);
             posts.docs.forEach(post => {
-                console.log(post.id);
                 //Put in id for the document easily accessible
                 blogPostsRef.doc(post.id).set({
                     id: post.id,
@@ -35,7 +33,6 @@ export default function Blog(props){
 
             })
             setBlogPosts(newBlogPosts);  
-            console.log(blogPosts);
         })
         if (user === process.env.REACT_APP_ADMIN_USERNAME && pass === process.env.REACT_APP_ADMIN_PASSWORD) {
             setLoggedIn(true);
@@ -127,17 +124,15 @@ function timeStamp(yy, mm, dd, hour, minute){
     function addZero(num){
         return num < 10 ? `0${num}` : num;
     }
-
+    //Date
     let yr = today.getFullYear();
     let mo = addZero(today.getMonth() + 1);
     let da = addZero(today.getDate());
     let date = `${yr}-${mo}-${da}`;
-    console.log(`Todays date is ${date}`);
-
+    //Time
     let hr = addZero(today.getHours());
     let min = addZero(today.getMinutes());
     let time = `${hr}:${min}`;
-    console.log(`Current time is: ${time}`);
 
     return date + ' ' + time;
 }

@@ -28,11 +28,6 @@ export default function Login(){
         else{
             alert("Logged in");
             setLoggedIn(true);
-            console.log(loggedIn);
-            const obj = { username, password};
-            console.log(JSON.stringify(obj));
-
-            console.log(localStorage.getItem("uname"));
         }
         e.preventDefault();
     }
