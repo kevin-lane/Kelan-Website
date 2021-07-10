@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import LoginModal from './Admin/Login';
 import LinkedIn  from '../assets/svg/LinkedInIcon';
@@ -27,7 +27,7 @@ export default function NavigationBar(){
                 <a href="#blog">BLOG</a>
                 <a href="#projects">PROJECTS</a>
                 <a href="#contact">CONTACT</a>
-                <a className="svgNavs" onClick={() => document.getElementById("login-modal").style.display = 'block'}>{loginStatus()}</a>
+                <a className="svgNavs" href={() => console.log("Admin panel opened")} onClick={() => document.getElementById("login-modal").style.display = 'block'}>{loginStatus()}</a>
                 <a className="svgNavs" href="https://www.linkedin.com/in/kevin-lane-884950a7/" target="_blank" rel="noreferrer"><LinkedIn></LinkedIn></a>
                 <a className="svgNavs" href="https://github.com/kevin-lane" target="_blank" rel="noreferrer"><GitHub></GitHub></a> 
             </ul>

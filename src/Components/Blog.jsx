@@ -40,7 +40,7 @@ export default function Blog(props){
     }, [])
 
     return(
-        <div>  
+        <div className="blog-page">  
             {loggedIn ? CreateBlogPost() : null}
                 {blogPosts.map(post => {                  
                         switch (blogPost) {

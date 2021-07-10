@@ -29,7 +29,7 @@ export default class Contact extends Component{
     
     render(){
         return(
-            <div>
+            <div id="contact-page">
                 <p style={{color: 'white'}}>If you want to come in contact with me, please do write a message to me and I will get back to you as soon as I can :)</p>
                     <div id="messageForm" className="messageForm">
                         <div id="greenSquare">
