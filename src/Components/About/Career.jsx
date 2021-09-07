@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../App';
 
+import classes from './About.module.css';
+
 export default function Career(){
     return(
-        <article className="aboutMe">
+        <article className={classes.aboutMe}>
             <h1>Career</h1>
             <h3> Office365/SharePoint Developer - Enfo  (Oct. 2019 - Feb. 2020) </h3>
             <p>At Enfo I worked in the Modern Workplace Team mainly 

@@ -1,0 +1,98 @@
+/* Blog and Projects */
+.blogPage{
+    margin-top: 5rem
+  }
+  
+  .returnBackBtn{
+    cursor: pointer;
+    float: left;
+    left: 50px;
+    position: fixed;
+    background-color: darkgoldenrod;
+    color: antiquewhite;
+    width: 5%;
+    height: 3%;
+    border-radius: 15px;
+  }
+  
+  .blogPostItem{
+    position: relative;
+    float: left;
+    margin: 20px;
+    width: 400px;
+    height: 400px;
+    max-height: 650px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 3px solid rgb(211, 211, 211, 0.6);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .blogPostItem > a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .createBlogPostButton{
+    background-color: lightblue;
+    width: 200px;
+    margin: 10px;
+    
+  }
+  
+  #blogPostModal{
+    display: none;
+    background-color: aqua;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    z-index: 1;
+  }
+  
+  .blogPostInput{
+    width: 400px;
+    margin: 10px;
+    border: 1px solid lightblue;
+  }
+  
+  #blogPostEntryField{
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 160px;
+  }
+  
+  .blogPostSubmitButton{
+    width: 350px;
+    height: 25px;
+    background-color: green;
+    color: whitesmoke;
+  }
+  
+  .blogPostItem > a:hover {
+    color: green;
+  }
+  
+  .postImage > img[src=""] {
+    display: none;
+  }
+  
+  .timeStamp {
+    position: absolute;
+    /* border: 2px solid cornsilk; */
+    bottom: 0px;
+    width: 100%;
+    height: 10%;
+    background-color: cornsilk;
+    border-radius: 0px 0px 6px 6px;
+  }
+  
+  #publishDate{
+    position: absolute;
+    font-family: monospace;
+    float: left;
+    color: gray;
+    left: 10px;
+  }

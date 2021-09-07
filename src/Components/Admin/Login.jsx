@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../App.css';
+import classes from './Login.module.css'
 
 export default function Login(){
     const [username, setUsername] = useState("");
@@ -43,21 +44,21 @@ export default function Login(){
     }
 
     return(
-        <div id="login-modal" >
+        <div id={classes.loginModal} >
             {loggedIn ? 
                 <div>
                     <h2>Admin is logged in</h2>
-                    <span className="close-modal" onClick={closeModal}>&times;</span>
-                    <button className="login-button" onClick={adminLogOut}>Log out</button>
+                    <span className={classes.closeModal} onClick={closeModal}>&times;</span>
+                    <button className={classes.loginButton} onClick={adminLogOut}>Log out</button>
                 </div>
                 :
                 <div>
                     <h2>Admin Login</h2>
-                    <span className="close-modal" onClick={closeModal}>&times;</span>
+                    <span className={classes.closeModal} onClick={closeModal}>&times;</span>
                     <form >
-                        <input id="username" className="login-input" type="text" placeholder="Enter Username" onChange={(e) => setUsername(e.target.value)} required></input><br />
-                        <input id="password" className="login-input" type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} required></input><br />
-                        <button className="login-button" type="submit" onClick={adminLoggedIn}>Log in</button>
+                        <input id="username" className={classes.loginInput} type="text" placeholder="Enter Username" onChange={(e) => setUsername(e.target.value)} required></input><br />
+                        <input id="password" className={classes.loginInput} type="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} required></input><br />
+                        <button className={classes.loginButton} type="submit" onClick={adminLoggedIn}>Log in</button>
                     </form>
                 </div>
             }
@@ -66,5 +67,5 @@ export default function Login(){
 }
 
 function closeModal() {
-    document.getElementById('login-modal').style.display = "none";
+    document.getElementById(classes.loginModal).style.display = "none";
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../../App';
 
+import classes from './About.module.css';
+
 export default function AboutNav(props){
     const [hash, setHash] = useState(window.location.hash);
     useEffect(() => {
@@ -22,7 +24,7 @@ export default function AboutNav(props){
 
 export function Sections(props){
     return(
-            <ul className="about-nav-bar">
+            <ul className={classes.aboutNavBar}>
                 <Section text="ABOUT ME" ></Section>
                 <Section text="SKILLS" ></Section>
                 <Section text="CAREER" ></Section>

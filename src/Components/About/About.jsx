@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
-import AboutMe from './About/AboutMe';
-import Career from './About/Career';
-import Education from './About/Education';
-import Skills from './About/Skills';
-import BackgroundImage from '../assets/images/sunsetsrilanka.jpg';
+import '../../App.css';
+import AboutMe from './AboutMe';
+import Career from './Career';
+import Education from './Education';
+import Skills from './Skills';
+import BackgroundImage from '../../assets/images/sunsetsrilanka.jpg';
+
+import classes from './About.module.css';
 
 export default function About(props){
     const [section, setSection] = useState(<AboutMe />);
@@ -15,7 +17,7 @@ export default function About(props){
 
     return(
         <div>
-            <ul className="about-nav-bar">
+            <ul className={classes.aboutNavBar}>
                 <li>
                     <span onClick={() => setSection(<AboutMe />)}>ABOUT ME</span>
                 </li>

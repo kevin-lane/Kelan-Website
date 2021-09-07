@@ -1,0 +1,37 @@
+/* About.jsx */
+#about-section {
+    background-color: blueviolet;
+  }
+  
+  .aboutMe{
+    width: 60%;
+    height: auto;
+    background-color:#8E7676;
+    color: white;
+    padding: 5px;
+    margin: auto;
+    border-radius: 50px;
+    opacity: 0.5;
+  }
+  
+  /* About Me Navigation Bar */
+  .aboutNavBar{
+    list-style-type: none;
+    position:inherit;
+    padding-top: 20px;
+  }
+  
+  .aboutNavBar li {
+    display: inline-block;
+    margin: 25px;
+    cursor: pointer;
+  }
+  
+  .aboutNavBar li span{
+    text-decoration: none;
+    color: #61dafb;
+  }
+  
+  .aboutNavBar li span:hover {
+    color: yellow;
+  }

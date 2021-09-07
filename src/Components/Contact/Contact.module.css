@@ -1,0 +1,94 @@
+/* Contact.jsx */
+#contactPage{
+    margin: 5rem;
+  }
+  .messageForm {
+    float: left;
+    width: 600px;
+    background-color: rgb(242, 242, 242, 0.5);
+    border-radius: 8px;
+    color: black;
+    max-height: 405.38px;
+    left: 50px;
+    margin: 10px;
+  }
+  
+  .messageForm input[type=text], input[type=email], #messageField {
+    width: 500px;
+    margin: 20px;
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255, 0.5);
+    border: 1px solid #DCE0E8;
+  }
+  
+   #messageField { 
+     min-height: 40px;
+     max-height: 150px;
+     min-width: 500px;
+     max-width: 500px; 
+   } 
+  
+  #submitBtn {
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color: green;
+    color: white;
+    width: 150px;
+    font-size: large;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  #sentNotice{
+    position: relative;
+    bottom: 100px;
+  }
+  
+  .contactDetails {
+    float: left;
+    background-color: rgb(255, 255, 255, 0.4);
+    width: 285px;
+    height: 295px;
+    margin: 10px;
+    right: 20px;
+    border-radius: 50px;
+  }
+  
+  /*OK animation (When message is sent) Contact.jsx*/
+  #greenSquare {
+    display: none;
+    filter: blur(0);
+    background-color: green;
+    color: #F2F2F2;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    position: relative;
+    animation: yes-animation 1s forwards;
+  }
+  
+  /* Check Icon */
+  .checkIcon {
+    position:relative;
+    margin: auto;
+    width: 20px;
+    height: 40px;
+    top: 20px;
+    left: 0px;
+    border-top: 6px solid wheat;
+    border-left: 6px solid wheat;
+    transform: rotateZ(225deg);
+  }
+  
+  @keyframes yes-animation {
+    0%{
+      top: 0;
+    }
+    50%{
+      top: 175px;
+    }
+    100%{
+      top: 150px;
+    }
+  }

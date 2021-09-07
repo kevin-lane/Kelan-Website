@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../App';
 
+import classes from './About.module.css';
+
 export default function Education(){
     return(
-        <article className="aboutMe">
+        <article className={classes.aboutMe}>
             <h1>Education</h1>
             <h3>SharePoint Developer - Higher Vocational Education/Yrkeshögskoleexamen - EC Utbildning (2017 - 2019)</h3>
             <p>This programs aim is to make you a certified SharePoint Developer. Courses included in this program are mainly about administration and building applications in SharePoint.

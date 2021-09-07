@@ -1,0 +1,43 @@
+/* Login panel */
+#loginModal {
+    display: none;
+    margin: auto; 
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    z-index: 1;
+  }
+  
+  .loginInput{
+    width: 400px;
+    height: 50px;
+    margin: 20px;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    font-size: 130%;
+  }
+  
+  .loginButton{
+    width: 400px;
+    height: 60px;
+    background-color: blue;
+    color: whitesmoke;
+    font-size: 200%;
+  }
+  
+  .closeModal{
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    float: right;
+    top: 5%;
+    right: 5%;
+    font-size: 45px;
+  }
+  
+  .closeModal:hover{
+    color: black;
+  }

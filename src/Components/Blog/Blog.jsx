@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
-import {db} from '../firebase';
-import BlogPost from './Blog/BlogPost';
-import Image from '../assets/images/blog-mock-images/bench.jpg';
-import ClockIcon from '../assets/svg/ClockIcon';
-import TrashIcon from '../assets/svg/TrashIcon';
-import PlusLgIcon from '../assets/svg/PlusLgIcon';
+import '../../App.css';
+import {db} from '../../firebase';
+import BlogPost from './BlogPost';
+import Image from '../../assets/images/blog-mock-images/bench.jpg';
+import ClockIcon from '../../assets/svg/ClockIcon';
+import TrashIcon from '../../assets/svg/TrashIcon';
+import PlusLgIcon from '../../assets/svg/PlusLgIcon';
+
+import classes from './Blog.module.css';
 
 const user = window.localStorage.getItem("uname");
 const pass = window.localStorage.getItem("pswrd");
@@ -40,7 +42,7 @@ export default function Blog(props){
     }, [])
 
     return(
-        <div className="blog-page">  
+        <div className={classes.blogPage}>  
             {loggedIn ? CreateBlogPost() : null}
                 {blogPosts.map(post => {                  
                         switch (blogPost) {
@@ -51,12 +53,12 @@ export default function Blog(props){
                                 return(
                                     <div> 
                                          <ul className="blog-posts">
-                                             <li id={post.id} className="blog-post-item" onClick={() => showBlogPost(post.id)}>
+                                             <li id={post.id} className={classes.blogPostItem} onClick={() => showBlogPost(post.id)}>
                                                 <img src={Image}  alt="Girl in a jacket" width="400" height="200" />
                                                 <h1 id="blog-post-heading">{post.heading}</h1>
                                                 {loggedIn ? <button onClick={(e) => DeleteBlogPost(e, post.id)}><TrashIcon></TrashIcon> </button> : null}     
-                                                <div className="time-stamp">
-                                                     <p id="blog-post-publish-date"><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
+                                                <div className={classes.timeStamp}>
+                                                     <p id={classes.publishDate}><ClockIcon /> <time dateTime={post.date}>{post.date}</time></p>
                                                 </div>
                                              </li>
                                          </ul>
@@ -79,14 +81,14 @@ function DeleteBlogPost(e, postID){
 function CreateBlogPost(){
         return(
             <div>
-                <button className="create-blog-post-button" onClick={() => document.getElementById("blog-post-modal").style.display = 'block'}><PlusLgIcon></PlusLgIcon> Create Blog Post</button>
-                <div id="blog-post-modal">
-                    <span className="close-modal" onClick={() => document.getElementById("blog-post-modal").style.display = 'none'}>&times;</span>
+                <button className={classes.createBlogPostButton} onClick={() => document.getElementById(classes.blogPostModal).style.display = 'block'}><PlusLgIcon></PlusLgIcon> Create Blog Post</button>
+                <div id={classes.blogPostModal}>
+                    <span className="close-modal" onClick={() => document.getElementById(classes.blogPostModal).style.display = 'none'}>&times;</span>
                     <form action="">
-                        <input className="blog-post-input" type="text" placeholder="Heading" id="blog-post-heading-field" required/><br/>
-                        <input className="blog-post-input" type="text" placeholder="Introduction" name="introduction" id="blog-post-introduction-field" /><br/>
-                        <textarea className="blog-post-input" name="entry" placeholder="Entry" id="blog-post-entry-field" required cols="30" rows="10"></textarea><br />
-                        <button className="blog-post-submit-button" type="submit" onClick={SubmitBlogPost}>Submit post</button>
+                        <input className={classes.blogPostInput} type="text" placeholder="Heading" id="blog-post-heading-field" required/><br/>
+                        <input className={classes.blogPostInput} type="text" placeholder="Introduction" name="introduction" id="blog-post-introduction-field" /><br/>
+                        <textarea className={classes.blogPostInput} name="entry" placeholder="Entry" id={classes.blogPostEntryField} required cols="30" rows="10"></textarea><br />
+                        <button className={classes.blogPostSubmitButton} type="submit" onClick={SubmitBlogPost}>Submit post</button>
                     </form>
                 </div>
             </div>
@@ -96,7 +98,7 @@ function CreateBlogPost(){
 function SubmitBlogPost(e){
     var heading = document.getElementById("blog-post-heading-field").value;
     var intro = document.getElementById("blog-post-introduction-field").value;
-    var entry = document.getElementById("blog-post-entry-field").value;
+    var entry = document.getElementById(classes.blogPostEntryField).value;
 
     e.preventDefault();
     if(heading === "" || /^\s/.test(heading) || entry === "" || /^\s/.test(entry)){
@@ -111,7 +113,7 @@ function SubmitBlogPost(e){
             entry: entry
         }).then((post) => {
             alert("Blog post added");
-            document.getElementById("blog-post-modal").style.display = 'none';
+            document.getElementById(classes.blogPostModal).style.display = 'none';
             window.location.reload();
         });
     }
