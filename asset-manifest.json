@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.619a7c9f.chunk.css",
-    "main.js": "/portfolio/static/js/main.09db1e96.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.09db1e96.chunk.js.map",
-    "runtime-main.js": "/portfolio/static/js/runtime-main.d63a6844.js",
-    "runtime-main.js.map": "/portfolio/static/js/runtime-main.d63a6844.js.map",
-    "static/js/2.6d095e94.chunk.js": "/portfolio/static/js/2.6d095e94.chunk.js",
-    "static/js/2.6d095e94.chunk.js.map": "/portfolio/static/js/2.6d095e94.chunk.js.map",
-    "static/js/3.9b8de9fd.chunk.js": "/portfolio/static/js/3.9b8de9fd.chunk.js",
-    "static/js/3.9b8de9fd.chunk.js.map": "/portfolio/static/js/3.9b8de9fd.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.cb6264c3.chunk.css",
+    "main.js": "/portfolio/static/js/main.1c4962a2.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.1c4962a2.chunk.js.map",
+    "runtime-main.js": "/portfolio/static/js/runtime-main.9c51e70f.js",
+    "runtime-main.js.map": "/portfolio/static/js/runtime-main.9c51e70f.js.map",
+    "static/js/2.d964b5a8.chunk.js": "/portfolio/static/js/2.d964b5a8.chunk.js",
+    "static/js/2.d964b5a8.chunk.js.map": "/portfolio/static/js/2.d964b5a8.chunk.js.map",
+    "static/js/3.7453a081.chunk.js": "/portfolio/static/js/3.7453a081.chunk.js",
+    "static/js/3.7453a081.chunk.js.map": "/portfolio/static/js/3.7453a081.chunk.js.map",
     "index.html": "/portfolio/index.html",
-    "static/css/main.619a7c9f.chunk.css.map": "/portfolio/static/css/main.619a7c9f.chunk.css.map",
-    "static/js/2.6d095e94.chunk.js.LICENSE.txt": "/portfolio/static/js/2.6d095e94.chunk.js.LICENSE.txt",
+    "static/css/main.cb6264c3.chunk.css.map": "/portfolio/static/css/main.cb6264c3.chunk.css.map",
+    "static/js/2.d964b5a8.chunk.js.LICENSE.txt": "/portfolio/static/js/2.d964b5a8.chunk.js.LICENSE.txt",
     "static/media/bench.b9ac6003.jpg": "/portfolio/static/media/bench.b9ac6003.jpg",
     "static/media/palmsky.466f747a.jpg": "/portfolio/static/media/palmsky.466f747a.jpg",
     "static/media/stockholm.6ecc953f.jpg": "/portfolio/static/media/stockholm.6ecc953f.jpg",
     "static/media/sunsetsrilanka.b1177c99.jpg": "/portfolio/static/media/sunsetsrilanka.b1177c99.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d63a6844.js",
-    "static/js/2.6d095e94.chunk.js",
-    "static/css/main.619a7c9f.chunk.css",
-    "static/js/main.09db1e96.chunk.js"
+    "static/js/runtime-main.9c51e70f.js",
+    "static/js/2.d964b5a8.chunk.js",
+    "static/css/main.cb6264c3.chunk.css",
+    "static/js/main.1c4962a2.chunk.js"
   ]
 }
