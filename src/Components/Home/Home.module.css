@@ -17,7 +17,7 @@
   
   #name{
     font-size:44px;
-    animation: titleSwipe 2s steps(32) backwards;
+    /* animation: titleSwipe 2s steps(32) backwards; */
     overflow: hidden;
     white-space: nowrap;
     letter-spacing: 3px;
@@ -25,7 +25,7 @@
   
   #jobTitle{
     font-size:20px;
-    animation: titleSwipe 2s steps(32) 1s backwards;
+    /* animation: titleSwipe 2s steps(32) 1s backwards; */
     overflow: hidden;
     white-space: nowrap;
     letter-spacing: 2px;
@@ -36,7 +36,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    animation: titleSwipe 2s steps(152) 1s backwards;
+    /* animation: titleSwipe 2s steps(152) 1s backwards; */
   }
   
   #locationSection > h2 {
@@ -45,7 +45,7 @@
     font-family:cursive;
   }
   
-  @keyframes titleSwipe {
+  /* @keyframes titleSwipe {
     from{width: 0;}
     to{width: 32ch; }
   }
@@ -55,7 +55,7 @@
       opacity: 0;
     }
     100%{ opacity: 1; }
-  }
+  } */
   
   @keyframes buttonFade {
     0% { visibility: visible; opacity: .5; }
