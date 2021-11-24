@@ -23,15 +23,12 @@ export default function Home(){
 
     return(
         <div id={classes.homePage}>
-            <div id={classes.titleSection} className={classes.presentationContent}>
+            <div className={classes.presentationContent}>
                 <h1 id={classes.name}>KEVIN LANE</h1>
                 <h3 id={classes.jobTitle} >JavaScript & Office365 Developer</h3>
+                <Geolocation /><h2>STOCKHOLM</h2>
             </div>
-
-            <div id={classes.locationSection} className={classes.presentationContent}>
-                <Geolocation /><h2>BASED IN STOCKHOLM</h2>
-            </div>
-            <a id="contact-btn" className={classes.contactMeBtn + ' ' + classes.presentationContent} href="#contact">{symbols}</a>
+            <a className={classes.contactMeBtn} href="#contact">{symbols}</a>
         </div>
     );
 }
